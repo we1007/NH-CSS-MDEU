@@ -1,0 +1,44 @@
+m1 = power * ScanFactor;
+m2 = power * PrintFactor;
+m3 = power * CopyFactor;
+
+if((m1) > StablePowerValue*2.5079) //150%倍的m1
+				{
+					if (m2 > StablePowerValue)
+					{
+						if (m3 > StablePowerValue)
+							CountArry[1] = 2;	//cout << "打印" << endl;													
+						else
+						{
+							RGrade = cRGrade(m2);
+							FGrade = cFGrade(m3);
+							if (RGrade > FGrade)
+								CountArry[1] = 2;	//cout << "打印" << endl;															
+							else if (RGrade < FGrade)
+								CountArry[2] = 3;	//cout << "复印" << endl;																	
+							else
+								CountArry[3] = 4;	//cout << "不确定" << endl;						
+						}
+					}
+					else
+					{
+						if (m3 > StablePowerValue)  //m2 < v0 ,m3 > v0
+						{
+							RGrade = cRGrade(m2);
+							FGrade = cFGrade(m3);
+							if (RGrade > FGrade)
+								CountArry[1] = 2; //cout << "打印" << endl;										
+							else if(RGrade < FGrade)
+								CountArry[2] = 3; //cout << "复印" << endl;					
+							else
+								CountArry[3] = 4;	//cout << "不确定" << endl;													
+						}
+						else
+							CountArry[2] = 3;	//cout << "复印" << endl;												
+					}									
+				}
+				else
+				{
+					CountArry[0] = 1; //cout << "扫描" << endl;														
+				}						
+			}	/*(PowerDirection == 1) end  */								
